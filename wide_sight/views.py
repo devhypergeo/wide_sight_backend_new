@@ -20,7 +20,7 @@ from rest_condition import Or
 from drf_autodocs.decorators import format_docstring
 
 from .models import sequences, panoramas, image_object_types, image_objects
-from .serializers import panoramas_serializer, sequences_serializer, image_object_types_serializer, image_objects_serializer, image_objects_geo_serializer
+from .serializers import panoramas_serializer, sequences_serializer, image_object_types_serializer, image_objects_serializer, image_objects_geo_serializer, panoramas_geo_serializer
 
 def viewer(request, pano_id = ''):
     if not pano_id:

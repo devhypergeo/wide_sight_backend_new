@@ -24,7 +24,9 @@ class panoramas_serializer(serializers.ModelSerializer):
     
     def get_utm_geom(self,obj):
         if obj.lon and obj.lat:
+            
             utm_srid = get_utm_srid_from_lonlat(obj.lon,obj.lat)
+            # utm_srid = 4326
             utm_easting, utm_northing, utm_zone_number, utm_letter = utm.from_latlon(obj.lon,obj.lat)
             wgs84_geom =  GEOSGeometry(Point(utm_easting, utm_northing, srid=utm_srid), srid=utm_srid)
             return wgs84_geom.ewkt #wgs84_geom.transform(get_utm_srid_from_lonlat(obj.lon,obj.lat)).geojson

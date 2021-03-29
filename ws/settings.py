@@ -8,7 +8,9 @@ SECRET_KEY = 'vd6*ql(-%s@u2^-+bowf##7qr5w5&@#-cy0)4#z&auuem2#p4!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+
+]
 
 
 # Application definition
