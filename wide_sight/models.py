@@ -6,6 +6,7 @@ import datetime
 import utm
 
 
+
 from django.db import models
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import GEOSGeometry, LineString, MultiPoint
@@ -68,9 +69,9 @@ class panoramas(DirtyFieldsMixin, models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, help_text=_("unique alphanumeric identifier"))
     eqimage = models.ImageField(upload_to=upload_img, help_text=_("equirectangular image path"))
     eqimage_thumbnail = ImageSpecField(source='eqimage',
-                                      processors=[ResizeToFill(480, 240)],
+                                      processors=[ResizeToFill(120, 60)],
                                       format='JPEG',
-                                      options={'quality': 60})
+                                      options={'quality': 40})
     geom = models.PointField(srid=4326, blank=True, null=True, geography=True, help_text=_("geometry location of the panorama"))
     sequence = models.ForeignKey('sequences', on_delete=models.CASCADE, help_text=_("sequence id to which panorama belongs"))
     lon = models.FloatField(blank=True, null=True, help_text=_("decimal longitude of the panorama"))

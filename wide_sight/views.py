@@ -28,9 +28,10 @@ def viewer(request, pano_id = ''):
     return render(request, 'index.html', {'pano_id': pano_id})
 
 class basePagination(PageNumberPagination):
-    page_size = 100
+    page_size = 8
     page_size_query_param = 'page_size'
     max_page_size = 10000
+    page_query_param = 'p'
 
 class sequencesViewSet(viewsets.ModelViewSet):
     queryset = sequences.objects.all()
@@ -40,6 +41,8 @@ class sequencesViewSet(viewsets.ModelViewSet):
 
     def initial(self, request, *args, **kwargs):
         super(sequencesViewSet, self).initial(request, *args, **kwargs)
+
+
 
 
 @format_docstring()

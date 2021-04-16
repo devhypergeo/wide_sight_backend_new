@@ -36,7 +36,7 @@ class panoramas_serializer(serializers.ModelSerializer):
     # creator_name = serializers.SerializerMethodField()
     # def get_creator_name(self,obj):
     #     return obj.sequence.creator_key.user.username
-
+    eqimage_thumbnail = serializers.ImageField(read_only=True)
     height_from_ground = serializers.SerializerMethodField()
     def get_height_from_ground(self,obj):
         return obj.height_correction or obj.sequence.height_from_ground
@@ -47,7 +47,7 @@ class panoramas_serializer(serializers.ModelSerializer):
         fields = (
             'id',
             'eqimage',
-            #'eqimage_thumbnail',
+            'eqimage_thumbnail',
             'geom',
             #'utm_geom',
             'sequence',
@@ -77,7 +77,7 @@ class panoramas_geo_serializer(GeoFeatureModelSerializer):
     # creator_name = serializers.SerializerMethodField()
     # def get_creator_name(self,obj):
     #     return obj.sequence.creator_key.user.username
-
+    eqimage_thumbnail = serializers.ImageField(read_only=True)
     class Meta:
         model = panoramas
         read_only_fields = ('id', 'utm_x', 'utm_y', 'utm_srid', 'utm_code', 'camera_prod', 'camera_model')
@@ -85,7 +85,7 @@ class panoramas_geo_serializer(GeoFeatureModelSerializer):
         fields = (
             'id',
             'eqimage',
-            #'eqimage_thumbnail',
+            'eqimage_thumbnail',
             'geom',
             'sequence',
             # 'creator_name',
